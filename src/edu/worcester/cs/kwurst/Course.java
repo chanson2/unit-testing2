@@ -1,7 +1,7 @@
 package edu.worcester.cs.kwurst;
 
 /* 
- * Copyright (C) 2013 Karl R. Wurst, Aparna Mahadev
+ * Copyright (C) 2013, 2015 Karl R. Wurst, Aparna Mahadev
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ package edu.worcester.cs.kwurst;
  * 
  * @author Karl R. Wurst
  * @author Aparna Mahadev
- * @version Lab 10
+ * @version CS-443 Fall 2015
  */
 public class Course {
 
@@ -126,5 +126,42 @@ public class Course {
 	@Override 
 	public String toString() {
 		return (department + "\t" + number + "\t" + title + "\t" + credits + "CR");
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + credits;
+		result = prime * result + ((department == null) ? 0 : department.hashCode());
+		result = prime * result + number;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Course other = (Course) obj;
+		if (credits != other.credits)
+			return false;
+		if (department == null) {
+			if (other.department != null)
+				return false;
+		} else if (!department.equals(other.department))
+			return false;
+		if (number != other.number)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
 	}
 }
