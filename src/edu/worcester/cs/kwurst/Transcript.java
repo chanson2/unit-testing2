@@ -150,7 +150,7 @@ public class Transcript {
      * @return whether the student is ready to graduate
      */
     public boolean readyToGraduate() {
-        return getCurrentRemainingCr() == 0 && gpa >= REQUIRED_GPA && lascComplete && majorComplete;
+        return getCurrentRemainingCr() <= 0 && gpa >= REQUIRED_GPA && lascComplete && majorComplete;
     }
     
 	/**
